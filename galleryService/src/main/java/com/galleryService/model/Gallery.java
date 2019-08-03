@@ -6,8 +6,12 @@ public class Gallery {
 
 	private long id;
 	private List<Object> images;
-	
+
 	public Gallery() {
+	}
+
+	public Gallery(int galleryId) {
+		this.id = galleryId;
 	}
 
 	public long getId() {
