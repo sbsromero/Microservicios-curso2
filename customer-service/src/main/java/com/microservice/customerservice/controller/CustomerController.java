@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservice.customerservice.model.Customer;
+import com.microservice.customerservice.model.Notification;
 import com.microservice.customerservice.repository.CustomerRepository;
 import com.microservice.customerservice.service.AccountService;
+import com.microservice.customerservice.service.NotificationService;
 
 @RestController
 public class CustomerController {
@@ -22,6 +24,9 @@ public class CustomerController {
 	@Autowired
 	AccountService accountService;
 
+	@Autowired
+	NotificationService notificationService;
+
 	@GetMapping(value = "/customer")
 	public Iterable<Customer> all() {
 		return customerRepository.findAll();
@@ -29,6 +34,8 @@ public class CustomerController {
 
 	@PostMapping(value = "/customer")
 	public Customer save(@RequestBody Customer customer) {
+		Notification notification = new Notification("customer is created", "test@gmail.com", "101-2200");
+		notificationService.sendNotification(notification);
 		return customerRepository.save(customer);
 	}
 
