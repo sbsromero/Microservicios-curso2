@@ -12,13 +12,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.microservice.accountservice.model.Account;
+import com.microservice.accountservice.model.Notification;
 import com.microservice.accountservice.repository.AccountRepository;
+import com.microservice.accountservice.service.NotificationService;
 
 @RestController
 public class AccountController {
 
 	@Autowired
 	public AccountRepository accountRepository;
+
+	@Autowired
+	public NotificationService NotificationService;
 
 	@GetMapping(value = "/account")
 	public Iterable<Account> all() {
@@ -27,6 +32,8 @@ public class AccountController {
 
 	@PostMapping(value = "/account")
 	public Account save(@RequestBody Account account) {
+		Notification notification = new Notification("Account is created", "test@gmail.com", "98-11202");
+		NotificationService.sendNotification(notification);
 		return accountRepository.save(account);
 	}
 
