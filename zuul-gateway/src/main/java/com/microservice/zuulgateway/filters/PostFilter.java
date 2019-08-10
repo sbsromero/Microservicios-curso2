@@ -18,7 +18,7 @@ public class PostFilter extends ZuulFilter {
 
 	@Override
 	public String filterType() {
-		return null;
+		return "post";
 	}
 
 	@Override

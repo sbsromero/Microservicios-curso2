@@ -12,7 +12,7 @@ public class PreFilter extends ZuulFilter {
 
 	@Override
 	public boolean shouldFilter() {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class PreFilter extends ZuulFilter {
 
 	@Override
 	public String filterType() {
-		return null;
+		return "pre";
 	}
 
 	@Override
