@@ -1,0 +1,11 @@
+### Spring properties
+# Service registers under this name
+spring:
+  application:
+    name: account-service
+
+
+# HTTP Server (Tomcat) Port
+server: 
+  port: 6060
+
